@@ -11,18 +11,16 @@ connectWithDB();
 
 // CORS Configuration
 const corsOptions = {
-    origin: process.env.frontendURL || "*",  // Ensure frontendURL is defined
+    origin: "https://bajaj-frontend-smoky-zeta.vercel.app/" || "*",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
 };
 
-// Middleware Setup
-app.use(cors(corsOptions));  // Apply CORS first
-app.options("*", cors(corsOptions)); // Handle preflight requests
-app.use(express.json());  // Parse JSON requests
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+app.use(express.json());
 
-// Debugging Middleware
 app.use((req, res, next) => {
     if (!req.secure) {
         console.warn("Warning: Insecure HTTP request received.");
@@ -31,15 +29,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// Define Routes
-app.use("/app", router);  // API Routes
 
-// Default Route (Keep it after other routes)
+app.use("/app", router);
+
 app.get("/", (req, res) => {
     res.send("The server is working fine.");
 });
 
-// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`The app is running on port ${PORT}`);
