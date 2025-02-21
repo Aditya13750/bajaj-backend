@@ -26,7 +26,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/", router);
+
+app.use("/", (req, res) => {
+    res.send("The server is wroking fine");
+})
+app.use("/app", router);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
