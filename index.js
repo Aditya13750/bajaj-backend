@@ -11,9 +11,12 @@ connectWithDB();
 app.use(express.json());
 
 const corsOptions = {
-    origin: "https://bajaj-frontend-smoky-zeta.vercel.app/" ,
-    methods: ['GET','POST'],
+    origin: "https://bajaj-frontend-smoky-zeta.vercel.app",
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 };
+
 
 app.use(cors(corsOptions));
 
