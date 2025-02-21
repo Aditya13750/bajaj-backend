@@ -6,16 +6,13 @@ require("dotenv").config();
 
 const app = express();
 
-// Connect to Database
 connectWithDB();
 
 app.use(express.json());
 
-// CORS Configuration
 const corsOptions = {
-    origin: process.env.frontendURL ,
+    origin: "https://bajaj-frontend-smoky-zeta.vercel.app/" ,
     methods: ['GET','POST'],
-    credentials: true,
 };
 
 app.use(cors(corsOptions));
