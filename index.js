@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 
-app.use("/app", router);
+app.use("/app/", router);
 
 app.get("/", (req, res) => {
     res.send("The server is working fine.");
