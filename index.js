@@ -13,7 +13,7 @@ app.use(express.json());
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'https://bajaj-frontend-smoky-zeta.vercel.app',
+    origin: 'https://bajaj-frontend-smoky-zeta.vercel.app/',
     methods: 'GET, POST',
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
