@@ -9,26 +9,16 @@ const app = express();
 // Connect to Database
 connectWithDB();
 
+app.use(express.json());
+
 // CORS Configuration
 const corsOptions = {
-    origin: "https://bajaj-frontend-smoky-zeta.vercel.app/" || "*",
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
+    origin: process.env.frontendURL ,
+    methods: ['GET','POST'],
     credentials: true,
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
-app.use(express.json());
-
-app.use((req, res, next) => {
-    if (!req.secure) {
-        console.warn("Warning: Insecure HTTP request received.");
-    }
-    console.log(`Request received: ${req.method} ${req.url}`);
-    next();
-});
-
 
 app.use("/app", router);
 
