@@ -6,27 +6,25 @@ require("dotenv").config();
 
 const app = express();
 
-
 connectWithDB();
 
-
 const corsOptions = {
-    origin: process.env.frontendURL, // Allow frontend domain
+    origin: process.env.frontendURL,
     methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
+    allowedHeaders: "Content-Type,Authorization",
 };
+
 app.use(cors(corsOptions));
-
-
 app.use(express.json());
-
 app.options("*", cors(corsOptions));
 
 app.use((req, res, next) => {
+    if (!req.secure) {
+        console.log("Warning: Insecure HTTP request received.");
+    }
     console.log(`Request received: ${req.method} ${req.url}`);
     next();
 });
-
 
 app.use("/", router);
 
