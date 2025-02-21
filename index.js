@@ -14,7 +14,7 @@ const corsOptions = {
     origin: "https://bajaj-frontend-smoky-zeta.vercel.app",
     methods: "GET, POST",
     // allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: false,
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
