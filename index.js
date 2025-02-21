@@ -15,7 +15,7 @@ const cors = require('cors');
 app.use(cors({
     origin: 'https://bajaj-frontend-smoky-zeta.vercel.app/',
     credentials: true,
-    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+    methods: ["GET","POST"],
     allowedHeaders: ['Content-Type'],
     exposedHeaders: ['Content-Type']
 }));
